@@ -11,12 +11,11 @@ module Spectr
       results = `#{detect_finder} \"#{pattern}\" spec/ --ruby`
   
       results.split(/\n/).map do |line|
-        match = line.split(/:/).map(&:strip).map(&:chomp)
-        /"(.+)"/ =~ match[2]
+        parts = line.split(/:/).map(&:chomp).map(&:strip)
 
-        { :file => match[0],
-          :line => match[1],
-          :spec => $1 }
+        { :file => parts[0],
+          :line => parts[1],
+          :spec => /"(.+)"/.match(parts[2]).captures.first }
       end
     end
   end
