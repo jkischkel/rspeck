@@ -7,9 +7,9 @@ module Spectr
       raise 'ack[-grep] not found!'
     end
 
-    def find(pattern)
+    def find(pattern, path)
       regex = /(\W|\A)it\W.*#{pattern}/
-      results = `#{detect_finder} \"#{regex}\" spec/ --ruby`
+      results = `#{detect_finder} \"#{regex}\" #{path} --ruby`
   
       results.split(/\n/).map do |line|
         parts = line.split(/:/).map(&:chomp).map(&:strip)

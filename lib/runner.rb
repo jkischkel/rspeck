@@ -16,7 +16,9 @@ module Spectr
         exit 1
       end
 
-      matches = find(args.first)
+      path = args[1] || 'spec/'
+
+      matches = find(args.first, path)
 
       matches.each do |match|
         puts "## testing #{match[:file]}:#{match[:line]} ##".yellow

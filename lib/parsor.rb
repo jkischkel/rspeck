@@ -6,7 +6,7 @@ module Spectr
     ARGUMENTS = ['--help', '-h', GetoptLong::NO_ARGUMENT]
 
     def print_help
-      puts 'spectr "test filter"'
+      puts 'rspeck "example matcher" [DIRECTORY...]'
     end
 
     def parse(args)
