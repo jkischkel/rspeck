@@ -10,16 +10,14 @@ module Spectr
     def find(pattern)
       results = `#{detect_finder} \"#{pattern}\" spec/ --ruby`
   
-      results.split(/\n/).inject([]) do |acc, line|
+      results.split(/\n/).map do |line|
         match = line.split(/:/).map(&:strip).map(&:chomp)
         /"(.+)"/ =~ match[2]
 
-        acc.push({
-          :file => match[0],
+        { :file => match[0],
           :line => match[1],
-          :spec => $1 })
+          :spec => $1 }
       end
     end
   end
-
 end
