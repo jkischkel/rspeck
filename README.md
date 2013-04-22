@@ -50,7 +50,7 @@ Local:
 
 ```
 gem build rspeck.gemspec
-gem install rspeck-0.1.0.gem
+gem install rspeck-0.1.1.gem
 ```
 
 #### How does this even work? ####
@@ -60,20 +60,20 @@ Lets say we want to run all examples that contain 'returns nil':
 rspeck "returns nil"
 ```
 
-This first runs `ack`, with a result like this:
+This runs `ack`, with a result like this:
 
 ```
 spec/unit/notifications/runnable_spec.rb
 128:      it "returns nil" do
 ```
 
-The result is pused to run the example:
+The result is parsed to run the example:
 
 ```
 bundle exec rake spec SPEC=spec/unit/notifications/runnable_spec.rb:128
 ```
 
-If multiple matches are found, all of them are executed.
+If multiple matches are found, all of them are tested.
 
 
 ## TODO ##
