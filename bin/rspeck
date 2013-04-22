@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby -w
+
+require File.join(File.dirname(__FILE__),'..','lib', 'runner')
+
+Spectr::Runner.new.run(ARGV)
