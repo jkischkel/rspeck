@@ -81,4 +81,5 @@ If multiple matches are found, all of them are tested.
 * batch examples instead of running them one by one
 * optimize output
 * more arguments for customization
+  - flag for displaying stderr
 * man page
