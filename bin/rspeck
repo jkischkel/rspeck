@@ -1,5 +1,8 @@
-#!/usr/bin/env ruby -w
+#!/bin/bash
 
-require File.join(File.dirname(__FILE__),'..','lib', 'runner')
+ack "$*" spec | cut -d: -f1-2 | while read line
+do
+  echo "######### testing "$line " #########"
+  bundle exec rake spec SPEC=$line
+done
 
-Spectr::Runner.new.run(ARGV)
