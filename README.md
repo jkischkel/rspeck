@@ -53,6 +53,18 @@ gem build rspeck.gemspec
 gem install rspeck-0.1.1.gem
 ```
 
+As a shell function so you can avoid all the bloat and have some idea what's running on your own machine:
+```
+cat <<EOF
+function rspeck() {
+  ack "$*" spec/ | cut -d: -f1-2 | while read line
+  do
+    echo "Testing $line"
+    rspec $line
+  done
+}
+EOF >> ~/.bashrc #or ~/.zshrc if you're hip
+
 #### How does this even work? ####
 Lets say we want to run all examples that contain 'returns nil':
 
