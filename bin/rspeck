@@ -1,8 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env/ruby -w
+#rubygems ignores any shebang and just calls Kernel#load
+#on your 'bin' file anyway. So this script calls out to
+#your shell as soon as it can. Lolruby.
 
-ack "$*" spec | cut -d: -f1-2 | while read line
+command = <<-EOF
+ack "#{ARGV.join(' ')}" spec/ | cut -d: -f1-2 | while read line
 do
   echo "######### testing "$line " #########"
   bundle exec rake spec SPEC=$line
 done
+EOF
+
+system(command)
 
