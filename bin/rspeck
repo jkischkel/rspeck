@@ -4,7 +4,10 @@
 #your shell as soon as it can. Lolruby.
 
 command = <<-EOF
-ack "#{ARGV.join(' ')}" spec/ | cut -d: -f1-2 | while read line
+ACK=`command -v ack-grep || command -v ack`
+
+$ACK "#{ARGV.join(' ')}" spec/ | cut -d: -f1-2 | while read line
+
 do
   echo "######### testing "$line " #########"
   bundle exec rake spec SPEC=$line
@@ -12,4 +15,3 @@ done
 EOF
 
 system(command)
-
