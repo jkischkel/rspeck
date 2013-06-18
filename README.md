@@ -64,6 +64,7 @@ function rspeck() {
   done
 }
 EOF >> ~/.bashrc #or ~/.zshrc if you're hip
+```
 
 #### How does this even work? ####
 Lets say we want to run all examples that contain 'returns nil':
